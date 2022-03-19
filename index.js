@@ -7,6 +7,14 @@ const mongodbClient = require("./mongoClient");
 
 // API REST
 const Product = require("./models");
+app.get('/products', async (req, res) => {
+    const products = await Product.find();
+    try{
+        res.send(products);
+    }catch(error){
+        res.status(500).send(error);
+    }
+})
 
 app.use(cors());
 
