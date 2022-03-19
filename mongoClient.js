@@ -11,7 +11,7 @@ const mongodbClient = {
           useUnifiedTopology: true,
         }
       );
-      client.then(console.log(`🎉 successfully conected to ${process.env.DATABASE}`));
+      client.then(console.log());
     } catch (error) {
       throw Error(error);
     }
