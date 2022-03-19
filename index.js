@@ -5,6 +5,9 @@ const port = process.env.PORT || 8000;
 const cors = require('cors');
 const mongodbClient = require("./mongoClient");
 
+// API REST
+const Product = require("./models");
+
 app.use(cors());
 
 app.get("/", (req, res) => {
