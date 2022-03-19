@@ -1,9 +1,9 @@
 const express = require('express');
 const app = express();
+const env = require('dotenv').config();
 const port = process.env.PORT || 8000;
 const cors = require('cors');
-const env = require('dotenv').config();
-const mongodbClient = require("./mongoClient")
+const mongodbClient = require("./mongoClient");
 
 app.use(cors());
 
@@ -12,6 +12,6 @@ app.get("/", (req, res) => {
 })
 
 app.listen(port, () => {
-    console.log("Server is running on port " + port);
+    console.log("🎉 Server is running on port " + port);
     mongodbClient.initialize();
 })

@@ -1,8 +1,7 @@
 const mongoose = require("mongoose");
 const schema = mongoose.Schema;
-const env = require("dotenv").config();
 
-const mondbClient = {
+const mongodbClient = {
   initialize: function () {
     try {
       const client = mongoose.connect(
@@ -12,11 +11,11 @@ const mondbClient = {
           useUnifiedTopology: true,
         }
       );
-      client.then("successfully conected to mongoDB");
+      client.then(console.log(`🎉 successfully conected to ${process.env.DATABASE}`));
     } catch (error) {
       throw Error(error);
     }
   },
 };
 
-module.exports = mondbClient;
+module.exports = mongodbClient;
