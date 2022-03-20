@@ -4,7 +4,7 @@ const env = require("dotenv").config();
 const port = process.env.PORT || 8000;
 const cors = require("cors");
 const mongodbClient = require("./mongoClient");
-const schema = require("./schema/index");
+const schema = require("./schema/index.js");
 const { graphqlHTTP } = require('express-graphql');
 
 

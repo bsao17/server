@@ -1,40 +1,43 @@
+const graphql = require("graphql");
 const {
-  graphql,
   GraphQLSchema,
   GraphQLObjectType,
   GraphQLString,
   GraphQLList,
-  GraphQLFloat
-} = require("graphql");
+  GraphQLFloat,
+} = graphql;
 
 const productType = new GraphQLObjectType({
-    name: "Product",
-    field: {
-        id: { type: GraphQLString },
-        name: { type: GraphQLString },
-        category: { type: GraphQLString },
-        filter: { type: GraphQLString },
-        price: { type: GraphQLFloat },
-    },
+  name: "Product",
+  fields: () => ({
+    id: { type: GraphQLString },
+    name: { type: GraphQLString },
+    category: { type: GraphQLString },
+    filter: { type: GraphQLString },
+    price: { type: GraphQLFloat },
+  }),
 });
-    
-const rootQuery = new GraphQLObjectType({
+
+const RootQuery = new GraphQLObjectType({
   name: "RootQueryType",
   fields: {
     hello: {
       type: GraphQLString,
       resolve() {
-        return "world";
+        return "Hi graphql";
+      },
+    },
+    products: {
+      type: new GraphQLList(productType),
+      resolve(parent, args) {
+        return [];
       },
     },
   },
-  products: {
-      type: GraphQLList(productType),
-      
-  }
 });
+
 const schema = new GraphQLSchema({
-  query: rootQuery,
+  query: RootQuery,
 });
 
 module.exports = schema;
