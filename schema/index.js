@@ -7,7 +7,7 @@ var schema = new GraphQLSchema({
         hello: {
           type: GraphQLString,
           resolve() {
-            return 'world';
+            return 'graphql-Express 🎉🎉🎉';
           },
         },
       },
